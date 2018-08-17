@@ -1,0 +1,196 @@
+/* Declerations */
+/* fonts: Mac, Windows */
+$main-font:    Helvetica, Arial, sans-serif;
+$bold-font:    Helvetica Bold, Arial Bold, sans-serif;
+$primary-color: #000;
+$default-ease: ease-in-out;
+$default-time: 0.4s;
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+// Tablets and small desktops
+$screen-lg-min: 992px;
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+/* mixins */
+@mixin round-corner($property) {
+	-webkit-border-radius: $property;
+	 -khtml-border-radius: $property;
+	   -moz-border-radius: $property;
+      -ms-border-radius: $property;
+          border-radius: $property;
+}
+@mixin transition-color() {
+  -webkit-transition: background-color $default-time $default-ease, color $default-time $default-ease;
+     -moz-transition: background-color $default-time $default-ease, color $default-time $default-ease;
+       -o-transition: background-color $default-time $default-ease, color $default-time $default-ease;
+          transition: background-color $default-time $default-ease, color $default-time $default-ease;
+}
+
+/* mixins responsive */
+// Small devices
+@mixin sm {
+   @media (min-width: #{$screen-sm-min}) {
+       @content;
+   }
+}
+// Medium devices
+@mixin md {
+   @media (min-width: #{$screen-md-min}) {
+       @content;
+   }
+}
+// Large devices
+@mixin lg {
+   @media (min-width: #{$screen-lg-min}) {
+       @content;
+   }
+}
+// Extra large devices
+@mixin xl {
+   @media (min-width: #{$screen-xl-min}) {
+       @content;
+   }
+}
+
+/* Classes */
+* {
+	 -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+          	 box-sizing: border-box;
+	font-family: $main-font;
+	color: $primary-color;
+}
+body, html{
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+header{
+	width:100%;
+	background-image: url('http://via.placeholder.com/600x600');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	margin-bottom: 20px;
+	@include lg {
+		background-image: url('http://via.placeholder.com/1440x650');
+	}
+}
+header div{
+	height: 386px;
+	background-color: rgba(0,0,0,0.3);
+	text-align: center;
+	width: 100%;
+	padding: 100px 1em 1em 1em;
+
+  @include sm {
+    height: 450px;
+    padding: 150px 1.5em 1.5em 1.5em;
+  }
+  @include md {
+    height: 576px;
+    padding: 220px 1.7em 1.7em 1.7em;
+  }
+  @include lg {
+  	height: 650px;
+    padding: 280px 1.5em 1.5em 1.5em;
+  }
+  @include xl {
+  	height: 800px;
+    padding: 320px 100px 100px 100px;
+  }
+}
+header div h1 {
+	font-family: $bold-font;
+	font-weight: bold;
+	color: white;
+	margin: auto;
+	line-height: 1.2;
+	font-size: 50px;
+  @include lg {
+		font-size: 68px;
+  }
+}
+header div p {
+  color: white;
+	text-align: center;
+	line-height: 1.2;
+	font-size: 26px;
+  letter-spacing: 2px;
+  @include lg {
+	  font-size: 34px;
+	  letter-spacing: 2.5px;
+  }
+}
+.container {
+  max-width:1170px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+.flexbox {
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: center;
+}
+.item {
+	@include round-corner(5px);
+  border: 1px solid #ededed;
+  box-shadow: 0px 0px 8px #ededed;
+  background-color: white;
+  color: $primary-color;
+  margin: 18px;
+  padding: 20px;
+  width: 327px;
+  float: left;
+  flex: 1;
+  max-width: 327px;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 64px;
+}
+.item img{
+	@include round-corner(4px);
+  width: 287px;
+}
+.item p{
+	margin-top: 10px;
+	text-align: center;
+	color: $primary-color;
+	line-height: 1.333;
+	letter-spacing: 2px;
+}
+.readmore{
+	@include round-corner(24px);
+	@include transition-color();
+	padding: 14px 20px;
+	border: 3px solid #2d2d2d;
+	background-color: white;
+	font-size: 10px;
+	color: $primary-color;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: 2px;
+  outline: 0;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  width: 150px;
+  margin-left: -75px;
+  left: 50%;
+}
+.readmore:hover {
+	color: white;
+	background-color: #2d2d2d;
+}
